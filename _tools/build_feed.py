@@ -1,5 +1,5 @@
 # Build noodlepets.app/feed/feed.json from the CMS rows.
-# usage: python3 build_feed.py <dir with items/*.json from ArtifactData out_dir> <dir with downloaded assets> <site repo>
+# usage: python3 build_feed.py <dir with items/*.json (+ optional meta/switches.json) from the CMS> <dir with downloaded assets> <site repo>
 import json, os, re, sys, glob, shutil
 rows_dir, asset_dir, site = sys.argv[1:4]
 SCREENS = {'pets','room','dressup','playground','tv','coins','plus','book','space'}
@@ -28,7 +28,13 @@ for d in rows:
         if not re.match(r'^\d{4}-\d\d-\d\dT\d\d:\d\d', d.get('at') or ''): continue
         it['at'] = d['at'][:16]
     items.append(it)
+# The game's own banners the CMS can switch off (meta/switches row); missing = on
+sw_file = f'{rows_dir}/meta/switches.json'
+sw = {}
+if os.path.exists(sw_file):
+    j = json.load(open(sw_file)); sw = j.get('data', j)
+switches = {'space': sw.get('space') is not False}
 for p in glob.glob(f'{site}/feed/img/*'):
-    if os.path.basename(p) not in used: os.remove(p)
-json.dump({'v': 1, 'items': items}, open(f'{site}/feed/feed.json', 'w'), indent=1, ensure_ascii=False)
-print(len(items), 'items;', len(used), 'pictures')
+    if os.path.basename(p) not in used and os.path.basename(p) != '.keep': os.remove(p)
+json.dump({'v': 1, 'switches': switches, 'items': items}, open(f'{site}/feed/feed.json', 'w'), indent=1, ensure_ascii=False)
+print(len(items), 'items;', len(used), 'pictures; space banner', 'on' if switches['space'] else 'off')

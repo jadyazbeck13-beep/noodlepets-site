@@ -1,1 +1,7 @@
-{"v":1,"items":[]}
+{
+ "v": 1,
+ "switches": {
+  "space": false
+ },
+ "items": []
+}

@@ -3,5 +3,17 @@
  "switches": {
   "space": true
  },
- "items": []
+ "items": [
+  {
+   "id": "dkkfvc07sc5f3jgahffw",
+   "kind": "notif",
+   "title": "Welcome to Noodle Pets! 🐾",
+   "text": "Your new puppy can’t wait to meet you. Come say hi and pick a name!",
+   "go": {
+    "type": "screen",
+    "screen": "pets"
+   },
+   "at": "2026-11-06T15:40"
+  }
+ ]
 }

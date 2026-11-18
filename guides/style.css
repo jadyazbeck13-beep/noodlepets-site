@@ -1,0 +1,46 @@
+:root{
+  --bg:#FFF6EA; --ink:#2B211C; --quiet:#6B5A50; --line:#E8D9C8;
+  --orange:#F28A2E; --orange-dark:#B8601A; --mint:#DDF1CF; --card:#FFFDF8;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:18px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased}
+main{max-width:680px;margin:0 auto;padding:0 20px 72px}
+.top{max-width:680px;margin:0 auto;padding:24px 20px 0}
+.top a{display:inline-flex;align-items:center;gap:8px;color:var(--orange-dark);
+  text-decoration:none;font-weight:700;font-size:16px}
+.top img{width:34px;height:34px;border-radius:9px;display:block}
+h1{font-size:36px;line-height:1.15;margin:28px 0 10px;letter-spacing:-.6px}
+h2{font-size:24px;margin:38px 0 10px;letter-spacing:-.2px}
+h3{font-size:20px;margin:26px 0 6px}
+p{margin:0 0 16px}
+ul,ol{margin:0 0 16px;padding-left:22px}
+li{margin:0 0 8px}
+a{color:var(--orange-dark)}
+.date{color:var(--quiet);font-size:16px;margin:0 0 26px}
+.lede{font-size:21px;color:var(--ink)}
+.note{background:var(--mint);border-radius:18px;padding:18px 20px;margin:28px 0}
+.note p:last-child{margin:0}
+blockquote{margin:24px 0;padding:16px 22px;background:var(--card);
+  border-left:4px solid var(--orange);border-radius:0 14px 14px 0}
+blockquote p:last-child{margin:0}
+.cards{display:grid;gap:16px;margin:24px 0}
+.card{display:block;background:var(--card);border:1px solid var(--line);
+  border-radius:18px;padding:20px 22px;text-decoration:none;color:var(--ink)}
+.card:hover{border-color:var(--orange)}
+.card h2{margin:0 0 6px;font-size:21px}
+.card p{margin:0;color:var(--quiet);font-size:16px}
+.mail{display:inline-flex;align-items:center;height:50px;padding:0 24px;margin:8px 0 16px;
+  border-radius:999px;background:var(--orange);color:#fff;font-weight:700;text-decoration:none;
+  box-shadow:0 4px 0 var(--orange-dark)}
+.mail:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.foot{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--quiet);font-size:16px}
+.foot a{margin-right:16px}
+@media (max-width:520px){
+  body{font-size:17px}
+  h1{font-size:29px}
+  h2{font-size:21px}
+  .lede{font-size:19px}
+}
